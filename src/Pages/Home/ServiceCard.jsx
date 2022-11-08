@@ -3,7 +3,7 @@ import { FaStar, FaLongArrowAltRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const ServiceCard = ({ info }) => {
-  const { title, img, rating, price, description } = info;
+  const { _id, title, img, rating, price, description } = info;
   return (
     <div className="card bg-accent shadow-xl rounded-none">
       <figure><img src={img} alt="Shoes" /></figure>
@@ -12,7 +12,7 @@ const ServiceCard = ({ info }) => {
         <h2 className="card-title text-3xl font-normal">{title}</h2>
         <p className='text-left font-normal'>{description.slice(0, 100)} <span className='font-semibold'>. . .</span></p>
         <div className="card-actions justify-start">
-          <Link to="/service">
+          <Link to={`/services/${_id}`}>
             <button className="btn btn-sm btn-info rounded-none font-bold text-white">Details <FaLongArrowAltRight className='ml-3' /></button>
           </Link>
         </div>

@@ -17,7 +17,7 @@ const ServicesTable = () => {
             services.map(service => {
               return (
                 <tr>
-                  <Link to="/service" ><button className='bg-accent w-full text-left text-white p-4 rounded-lg mb-1 font-semibold text-xl'>{service.title}</button></Link>
+                  <Link to={`/services/${service._id}`} ><button className='bg-accent w-full text-left text-white p-4 rounded-lg mb-1 font-semibold text-xl'>{service.title}</button></Link>
                 </tr>
               )
             })
