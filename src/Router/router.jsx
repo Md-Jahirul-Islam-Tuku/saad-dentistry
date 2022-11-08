@@ -4,8 +4,10 @@ import ServicesDisplay from "../Layout/ServicesDisplay";
 import AddService from "../Pages/AddService/AddService";
 import Blog from "../Pages/Blog/Blog";
 import Home from "../Pages/Home/Home";
+import Login from "../Pages/Login/Login";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 import ServicesAll from "../Pages/ServicesAll/ServicesAll";
+import SignUp from "../Pages/SignUp/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
       {
         path: '/add-service',
         element: <AddService/>
+      },
+      {
+        path: '/login',
+        element: <Login/>
+      },
+      {
+        path: '/sign-up',
+        element: <SignUp/>
       },
       {
         path: '/services',

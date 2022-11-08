@@ -9,7 +9,7 @@ const Navbar = () => {
     <li><Link to="/blog" >Blog</Link></li>
     <li><a>My reviews</a></li>
     <li><Link to="/add-service" >Add service</Link></li>
-    <li><a>Login</a></li>
+    <li><Link to="/login" >Login</Link></li>
   </>
   return (
     <div className="navbar bg-base-100 shadow-xl py-5 fixed z-10 lg:px-20">
