@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const AddService = () => {
+  const navigate = useNavigate();
   const handleAddService = e => {
     e.preventDefault();
     const form = e.target;
@@ -17,10 +19,11 @@ const AddService = () => {
       price: price,
       description: description
     }
+    console.log(service);
     fetch('http://localhost:5000/services', {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type':'application/json'
       },
       body: JSON.stringify(service)
     })
@@ -28,7 +31,8 @@ const AddService = () => {
     .then(data => {
       if (data.acknowledged) {
         alert('Your New Service added successfully')
-        form.reset()
+        form.reset();
+        navigate('/services');
       }
     })
     .catch(err => console.error(err))

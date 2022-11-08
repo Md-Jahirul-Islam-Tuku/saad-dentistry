@@ -10,20 +10,18 @@ const ServicesTable = () => {
   }, [])
   return (
     <div className="overflow-x-auto col-span-1 mr-5">
-      <h1 className='text-3xl font-bold text-info my-4'>All services</h1>
-      <table className="table w-full z-0">
-        <tbody>
-          {
-            services.map(service => {
-              return (
-                <tr>
-                  <Link to={`/services/${service._id}`} ><button className='bg-accent w-full text-left text-white p-4 rounded-lg mb-1 font-semibold text-xl'>{service.title}</button></Link>
-                </tr>
-              )
-            })
-          }
-        </tbody>
-      </table>
+      <h1 className='text-3xl font-bold text-info my-4'>Total services {services.length}</h1>
+      <div>
+        {
+          services.map(service => {
+            return (
+              <div key={service._id}>
+                <Link to={`/services/${service._id}`} ><button className='bg-accent w-full text-left text-white p-4 rounded-lg mb-1 font-semibold text-xl'>{service.title}</button></Link>
+              </div>
+            )
+          })
+        }
+      </div>
     </div>
   );
 };

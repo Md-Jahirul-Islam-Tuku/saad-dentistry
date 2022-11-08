@@ -21,7 +21,7 @@ const Services = () => {
       </div>
       <div className='grid grid-cols-3 gap-5 my-10'>
         {
-          services.map(service => <ServiceCard key={service._id} info={service} />).slice(3)
+          services.map(service => <ServiceCard key={service._id} info={service} />).slice(0, 3)
         }
       </div>
     </div>
