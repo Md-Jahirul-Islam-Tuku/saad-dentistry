@@ -4,6 +4,13 @@ import google from '../../Assets/Icons/google.png'
 import { Link } from 'react-router-dom';
 
 const Login = () => {
+
+  const handleLogin = e => {
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+  }
   return (
     <div>
       <div className="hero h-[100vh] flex" style={{ backgroundImage: `url(${bgImg})` }}>
@@ -21,7 +28,7 @@ const Login = () => {
               <label className="label">
                 <span className="label-text text-lg font-semibold">Password</span>
               </label>
-              <input type="password" placeholder="Password" className="input input-bordered bg-blue-100" />
+              <input name='password' type="password" placeholder="Password" className="input input-bordered bg-blue-100" />
             </div>
             <div className="my-3 flex items-center">
               <h4 className='font-semibold'>Forget password?</h4>
