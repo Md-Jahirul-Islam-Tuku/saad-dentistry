@@ -5,6 +5,7 @@ import AddService from "../Pages/AddService/AddService";
 import Blog from "../Pages/Blog/Blog";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
+import MyReviews from "../Pages/Reviews/MyReviews";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 import ServicesAll from "../Pages/ServicesAll/ServicesAll";
 import SignUp from "../Pages/SignUp/SignUp";
@@ -12,44 +13,48 @@ import SignUp from "../Pages/SignUp/SignUp";
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Main/>,
+    element: <Main />,
     children: [
       {
         path: '/',
-        element: <Home/>
+        element: <Home />
       },
       {
         path: '/home',
-        element: <Home/>
+        element: <Home />
       },
       {
         path: '/blog',
-        element: <Blog/>
+        element: <Blog />
+      },
+      {
+        path: '/myreviews',
+        element: <MyReviews />
       },
       {
         path: '/add-service',
-        element: <AddService/>
+        element: <AddService />
       },
       {
         path: '/login',
-        element: <Login/>
+        element: <Login />
       },
       {
-        path: '/sign-up',
-        element: <SignUp/>
+        path: '/signup',
+        element: <SignUp />
       },
       {
         path: '/services',
-        element: <ServicesDisplay/>,
+        element: <ServicesDisplay />,
         children: [
           {
             path: '/services',
-            element: <ServicesAll/>
+            element: <ServicesAll />
           },
           {
             path: '/services/:id',
-            element: <ServiceDetails/>,
-            loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
+            element: <ServiceDetails />,
+            loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`)
           }
         ]
       },
