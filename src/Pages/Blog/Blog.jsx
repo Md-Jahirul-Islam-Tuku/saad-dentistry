@@ -1,8 +1,10 @@
 import React from 'react';
 import logo from '../../Assets/img/blog-logo.png'
 import border from '../../Assets/img/title-icon.png'
+import useTitle from '../../hooks/useTitle';
 
 const Blog = () => {
+  useTitle('Blog');
   return (
     <div className='pt-28 h-[100vh] lg:px-20'>
       <img className='mx-auto h-20' src={logo} alt="logo" />

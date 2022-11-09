@@ -3,11 +3,13 @@ import bgImg from '../../Assets/img/bg-img.jpg';
 import google from '../../Assets/Icons/google.png'
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
   const { userLogin, setLoading, googleLogin } = useContext(AuthContext);
   const [error, setError] = useState('');
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  useTitle('Login');
 
   const handleLogin = e => {
     e.preventDefault();

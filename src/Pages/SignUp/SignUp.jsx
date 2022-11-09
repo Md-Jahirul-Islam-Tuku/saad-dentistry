@@ -4,11 +4,13 @@ import google from '../../Assets/Icons/google.png'
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import useTitle from '../../hooks/useTitle';
 
 const SignUp = () => {
   const { userSignUp, auth, googleLogin } = useContext(AuthContext);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  useTitle('Sign Up')
 
   const handleSignUp = e => {
     e.preventDefault();

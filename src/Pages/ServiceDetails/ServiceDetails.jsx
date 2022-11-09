@@ -75,7 +75,7 @@ const ServiceDetails = () => {
       {/* The button to control review form */}
       {
         user ? <button onClick={handleShow} className="btn my-5 btn-accent text-white">Add Your Review</button> :
-          <Link to='/login' ><label className="btn mt-5">Please login to add a review</label></Link>
+          <Link to='/login' ><label className="btn mt-5 btn-accent text-white">Please login to add a review</label></Link>
       }
 
       {/* Review form */}
@@ -105,6 +105,9 @@ const ServiceDetails = () => {
 
       {/* All Reviews are here */}
       <div>
+        {
+          reviews.length === 0 && <h1 className="text-3xl font-semibold text-gray-300" >No reviews were added</h1>
+        },
         {
           reviews.map(review => <Review
           key={review._id}
