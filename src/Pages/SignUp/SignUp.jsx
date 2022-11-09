@@ -45,25 +45,25 @@ const SignUp = () => {
               <label className="label">
                 <span className="label-text text-lg font-semibold">Your Name</span>
               </label>
-              <input name='name' type="text" placeholder="Your name" className="input input-bordered bg-blue-100" />
+              <input name='name' type="text" placeholder="Your name" className="input input-bordered bg-blue-100" required />
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-lg font-semibold">Photo URL</span>
               </label>
-              <input name='photo' type="text" placeholder="Photo URL" className="input input-bordered bg-blue-100" />
+              <input name='photo' type="text" placeholder="Photo URL" className="input input-bordered bg-blue-100" required />
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-lg font-semibold">Your Email</span>
               </label>
-              <input name='email' type="email" placeholder="Your email" className="input input-bordered bg-blue-100" />
+              <input name='email' type="email" placeholder="Your email" className="input input-bordered bg-blue-100" required />
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-lg font-semibold">Password</span>
               </label>
-              <input name='password' type="password" placeholder="Password" className="input input-bordered bg-blue-100" />
+              <input name='password' type="password" placeholder="Password" className="input input-bordered bg-blue-100" required />
             </div>
             <div className="form-control mt-5">
               <button type='submit' className="btn btn-info font-bold text-white text-lg">Sign Up</button>

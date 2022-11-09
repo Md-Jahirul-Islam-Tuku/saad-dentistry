@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import bgImg from '../../Assets/img/bg-img.jpg';
 import google from '../../Assets/Icons/google.png'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Login = () => {
-  const { userLogin, setLoading, googleLogin } = useContext(AuthContext)
+  const { userLogin, setLoading, googleLogin } = useContext(AuthContext);
+  const [error, setError] = useState('')
 
   const handleLogin = e => {
     e.preventDefault();
@@ -17,7 +18,18 @@ const Login = () => {
       const user = result.user;
       console.log(user);
     })
-    .catch(err => console.error(err))
+    .catch(err => {
+      if (err.message === 'Firebase: Error (auth/wrong-password).') {
+        setError('😠 Wrong Password');
+      }
+      else if (err.message === 'Firebase: Error (auth/user-not-found).'){
+        setError('🙄 User Not Found')
+      }
+      else{
+        setError(err.message)
+      }
+      console.error(err);
+    })
     .finally(()=> setLoading(false))
   }
   const handleGoogleLogin = () => {
@@ -47,7 +59,8 @@ const Login = () => {
               </label>
               <input name='password' type="password" placeholder="Password" className="input input-bordered bg-blue-100" />
             </div>
-            <div className="my-3 flex items-center">
+            <h5 className='text-left text-red-600'><span className='text-white'>.</span> {error}</h5>
+            <div className="mb-2 flex items-center">
               <h4 className='font-semibold'>Forget password?</h4>
               <button className="font-bold text-info text-lg ml-2">Reset</button>
             </div>

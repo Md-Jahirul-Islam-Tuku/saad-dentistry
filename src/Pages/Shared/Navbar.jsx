@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 import logo from '../../navLogo.png'
 
 const Navbar = () => {
-
+  const { user, logOut }= useContext(AuthContext)
   const menu = <>
     <li><Link to="/home" >Home</Link></li>
     <li><Link to="/blog" >Blog</Link></li>
-    <li><a>My reviews</a></li>
-    <li><Link to="/add-service" >Add service</Link></li>
-    <li><Link to="/login" >Login</Link></li>
+    {user ? <>
+      <li><a>My reviews</a></li>
+      <li><Link to="/add-service" >Add service</Link></li>
+      <li><Link to="/" ><button onClick={logOut} >Log Out</button></Link></li>
+      <div className='my-auto tooltip tooltip-bottom tooltip-info' data-tip={user?.displayName}>
+        <img className='h-10 rounded-full' src={user?.photoURL} alt="User" />
+      </div>
+    </> : <li><Link to="/login" >Login</Link></li>}
   </>
   return (
     <div className="navbar bg-base-100 shadow-xl py-5 fixed z-10 lg:px-20">
@@ -24,7 +30,7 @@ const Navbar = () => {
         </div>
         <Link to='/' className="btn btn-ghost normal-case text-xl"><img className='h-12' src={logo} alt="Logo" /></Link>
       </div>
-      <div className="navbar-end hidden lg:flex">
+      <div className="navbar-end hidden lg:flex items-center">
         <ul className="menu menu-horizontal p-0 text-lg font-semibold text-info">
           {menu}
         </ul>
