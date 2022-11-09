@@ -3,11 +3,12 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 import PhotoViewer from '../Shared/PhotoViewer';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import Review from '../Reviews/Review';
 
 const ServiceDetails = () => {
   const [hide, setHide] = useState('hidden');
+  const [refresh, setRefresh] = useState(false);
   const { _id, title, img, rating, price, description } = useLoaderData();
   const { user } = useContext(AuthContext);
   const handleShow = () => setHide('');
@@ -17,22 +18,70 @@ const ServiceDetails = () => {
       Swal.fire('Maximum Rating Point 5');
     }
   }
+  const handleDelete = id => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/reviews/${id}`, {
+          method: 'delete'
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.deletedCount > 0) {
+              swalWithBootstrapButtons.fire(
+                'Deleted!',
+                'Your review has been deleted.',
+                'success'
+              )
+            }
+          })
+
+      } else if (
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your imaginary review is safe :)',
+          'error'
+        )
+      }
+    })
+  }
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     fetch(`http://localhost:5000/review?service=${_id}`)
       .then(res => res.json())
-      .then(data => setReviews(data))
-  }, [_id])
+      .then(data => {
+        setReviews(data);
+        setRefresh(!refresh);
+      })
+  }, [_id, refresh])
   const handleReview = e => {
     e.preventDefault();
     const form = e.target;
     const service = _id;
+    const serviceName = title;
     const name = user.displayName;
     const image = user.photoURL;
     const email = user.email;
     const rating = form.rating.value;
     const text = form.text.value;
-    const review = {service, name, image, email, rating, text};
+    const review = { service, serviceName, name, image, email, rating, text };
     fetch('http://localhost:5000/reviews', {
       method: 'POST',
       headers: {
@@ -45,7 +94,7 @@ const ServiceDetails = () => {
         console.log(data)
         if (data.acknowledged) {
           Swal.fire('Your review submitted successfully');
-          form.reset()
+          form.reset();
         }
       })
       .catch(err => console.error(err))
@@ -110,8 +159,10 @@ const ServiceDetails = () => {
         },
         {
           reviews.map(review => <Review
-          key={review._id}
-          review={review}
+            key={review?._id}
+            review={review}
+            hide={hide}
+            handleDelete={handleDelete}
           ></Review>)
         }
       </div>

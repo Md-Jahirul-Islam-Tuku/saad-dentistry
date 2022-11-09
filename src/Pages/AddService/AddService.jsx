@@ -32,7 +32,7 @@ const AddService = () => {
     })
     .then(res => res.json())
     .then(data => {
-      if (data.acknowledged) {
+      if (data?.acknowledged) {
         Swal.fire({
           position: 'top-center',
           icon: 'success',
