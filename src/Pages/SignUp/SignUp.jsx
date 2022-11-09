@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react';
 import bgImg from '../../Assets/img/signup-bg.jpg';
 import google from '../../Assets/Icons/google.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 
 const SignUp = () => {
   const { userSignUp, auth, googleLogin } = useContext(AuthContext);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSignUp = e => {
     e.preventDefault();
@@ -15,23 +17,21 @@ const SignUp = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    userSignUp(email, password).then(result => {
-      const user = result.user;
+    userSignUp(email, password).then(() => {
       updateProfile(auth.currentUser, {
         displayName: name,
         photoURL: photo
       });
-      console.log(user);
-    }).then(error => console.error('error', error))
-    form.reset()
+      form.reset();
+      navigate('/')
+    }).catch(error => {
+      if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
+        setError('already in use. Just Login.')
+      }
+    })
   };
   const handleGoogleLogin = () => {
-    googleLogin()
-      .then(result => {
-        const user = result.user;
-        console.log(user);
-      })
-      .catch(err => console.error(err))
+    googleLogin().then(() => {}).catch(err => console.error(err))
   }
   return (
     <div className='pt-20'>
@@ -55,7 +55,7 @@ const SignUp = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text text-lg font-semibold">Your Email</span>
+                <span className="label-text text-lg font-semibold">Your Email <span className='text-red-600'>{error}</span></span>
               </label>
               <input name='email' type="email" placeholder="Your email" className="input input-bordered bg-blue-100" required />
             </div>

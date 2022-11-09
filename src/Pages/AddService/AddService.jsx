@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
 
 const AddService = () => {
   const navigate = useNavigate();
@@ -30,7 +31,13 @@ const AddService = () => {
     .then(res => res.json())
     .then(data => {
       if (data.acknowledged) {
-        alert('Your New Service added successfully')
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Your New Service added successfully',
+          showConfirmButton: false,
+          timer: 2000
+        })
         form.reset();
         navigate('/services');
       }

@@ -1,12 +1,13 @@
 import React, { useContext, useState } from 'react';
 import bgImg from '../../Assets/img/bg-img.jpg';
 import google from '../../Assets/Icons/google.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Login = () => {
   const { userLogin, setLoading, googleLogin } = useContext(AuthContext);
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
+  const navigate = useNavigate()
 
   const handleLogin = e => {
     e.preventDefault();
@@ -14,16 +15,13 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     userLogin(email, password)
-    .then(result => {
-      const user = result.user;
-      console.log(user);
-    })
+    .then(() => {navigate('/')})
     .catch(err => {
       if (err.message === 'Firebase: Error (auth/wrong-password).') {
-        setError('😠 Wrong Password');
+        setError('😠 wrong password !!');
       }
       else if (err.message === 'Firebase: Error (auth/user-not-found).'){
-        setError('🙄 User Not Found')
+        setError('🙄 User Not Found. Please Sign Up.')
       }
       else{
         setError(err.message)
@@ -33,12 +31,7 @@ const Login = () => {
     .finally(()=> setLoading(false))
   }
   const handleGoogleLogin = () => {
-    googleLogin()
-    .then(result => {
-      const user = result.user;
-      console.log(user);
-    })
-    .catch(err => console.error(err))
+    googleLogin().then(() => {navigate('/')}).catch(err => console.error(err))
   }
   return (
     <div>
@@ -55,12 +48,12 @@ const Login = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text text-lg font-semibold">Password</span>
+                <span className="label-text text-lg font-semibold">Password <span className='text-sm text-red-600'>{error}</span></span>
               </label>
               <input name='password' type="password" placeholder="Password" className="input input-bordered bg-blue-100" />
             </div>
-            <h5 className='text-left text-red-600'><span className='text-white'>.</span> {error}</h5>
-            <div className="mb-2 flex items-center">
+            {/* <h5 className='text-left text-red-600'><span className='text-white'>.</span> {error}</h5> */}
+            <div className="my-2 flex items-center">
               <h4 className='font-semibold'>Forget password?</h4>
               <button className="font-bold text-info text-lg ml-2">Reset</button>
             </div>
