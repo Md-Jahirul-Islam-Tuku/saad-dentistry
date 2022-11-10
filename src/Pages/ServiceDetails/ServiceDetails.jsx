@@ -37,7 +37,7 @@ const ServiceDetails = () => {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/reviews/${id}`, {
+        fetch(`https://saad-dentistry-server.vercel.app/reviews/${id}`, {
           method: 'delete'
         })
           .then(res => res.json())
@@ -64,7 +64,7 @@ const ServiceDetails = () => {
   }
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/review?service=${_id}`)
+    fetch(`https://saad-dentistry-server.vercel.app/review?service=${_id}`)
       .then(res => res.json())
       .then(data => {
         setReviews(data);
@@ -82,7 +82,7 @@ const ServiceDetails = () => {
     const rating = form.rating.value;
     const text = form.text.value;
     const review = { service, serviceName, name, image, email, rating, text };
-    fetch('http://localhost:5000/reviews', {
+    fetch('https://saad-dentistry-server.vercel.app/reviews', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

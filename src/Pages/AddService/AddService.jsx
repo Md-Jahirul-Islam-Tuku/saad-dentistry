@@ -23,28 +23,28 @@ const AddService = () => {
       description: description
     }
     console.log(service);
-    fetch('http://localhost:5000/services', {
+    fetch('https://saad-dentistry-server.vercel.app/services', {
       method: 'POST',
       headers: {
-        'content-type':'application/json'
+        'content-type': 'application/json'
       },
       body: JSON.stringify(service)
     })
-    .then(res => res.json())
-    .then(data => {
-      if (data?.acknowledged) {
-        Swal.fire({
-          position: 'top-center',
-          icon: 'success',
-          title: 'Your New Service added successfully',
-          showConfirmButton: false,
-          timer: 2000
-        })
-        form.reset();
-        navigate('/services');
-      }
-    })
-    .catch(err => console.error(err))
+      .then(res => res.json())
+      .then(data => {
+        if (data?.acknowledged) {
+          Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Your New Service added successfully',
+            showConfirmButton: false,
+            timer: 2000
+          })
+          form.reset();
+          navigate('/services');
+        }
+      })
+      .catch(err => console.error(err))
 
   }
   return (

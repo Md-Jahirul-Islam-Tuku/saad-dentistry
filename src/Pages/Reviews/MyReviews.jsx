@@ -6,25 +6,25 @@ import Swal from 'sweetalert2';
 
 const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
-  const [refresh, setRefresh]= useState(false);
+  const [refresh, setRefresh] = useState(false);
   const { user, logOut } = useContext(AuthContext);
   useTitle('My reviews')
-  useEffect(()=>{
-    fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+  useEffect(() => {
+    fetch(`https://saad-dentistry-server.vercel.app/reviews?email=${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('saad-token')}`
       }
     })
-    .then(res => {
-      if (res.status === 401 || res.status === 403) {
-        return logOut();
-      }
-      return res.json()
-    })
-    .then(data => {
-      setReviews(data)
-      setRefresh(!refresh)
-    })
+      .then(res => {
+        if (res.status === 401 || res.status === 403) {
+          return logOut();
+        }
+        return res.json()
+      })
+      .then(data => {
+        setReviews(data)
+        setRefresh(!refresh)
+      })
   }, [user?.email, refresh, logOut])
   const handleDelete = id => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -45,7 +45,7 @@ const MyReviews = () => {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/reviews/${id}`, {
+        fetch(`https://saad-dentistry-server.vercel.app/reviews/${id}`, {
           method: 'delete',
           headers: {
             authorization: `Bearer ${localStorage.getItem('saad-token')}`
