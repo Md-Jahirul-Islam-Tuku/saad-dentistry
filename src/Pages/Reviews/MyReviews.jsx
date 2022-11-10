@@ -7,16 +7,25 @@ import Swal from 'sweetalert2';
 const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [refresh, setRefresh]= useState(false);
-  const { user, loading } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   useTitle('My reviews')
   useEffect(()=>{
-    fetch(`http://localhost:5000/reviews?email=${user?.email}`)
-    .then(res => res.json())
+    fetch(`http://localhost:5000/reviews?email=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem('saad-token')}`
+      }
+    })
+    .then(res => {
+      if (res.status === 401 || res.status === 403) {
+        return logOut();
+      }
+      return res.json()
+    })
     .then(data => {
       setReviews(data)
       setRefresh(!refresh)
     })
-  }, [user?.email, refresh])
+  }, [user?.email, refresh, logOut])
   const handleDelete = id => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -37,7 +46,10 @@ const MyReviews = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/reviews/${id}`, {
-          method: 'delete'
+          method: 'delete',
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('saad-token')}`
+          }
         })
           .then(res => res.json())
           .then(data => {
@@ -62,7 +74,7 @@ const MyReviews = () => {
     })
   }
   return (
-    <div className='pt-32 px-3 md:px-10 lg:px-56 h-[100vh]'>
+    <div className='pt-32 px-3 md:px-10 lg:px-56 min-h-[100vh] lg:mb-10'>
       <div className=''>
         {
           reviews.map(review => <Review

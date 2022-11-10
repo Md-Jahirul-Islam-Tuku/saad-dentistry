@@ -19,7 +19,25 @@ const Login = () => {
   const email = form.email.value;
   const password = form.password.value;
   userLogin(email, password)
-   .then(() => navigate(from, { replace: true }))
+   .then(result => {
+    const user = result.user;
+    const currentUser = {
+      email: user.email
+    }
+    console.log(currentUser);
+     fetch('http://localhost:5000/jwt', {
+      method: 'POST',
+      headers: {
+        'content-type':'application/json'
+      },
+      body: JSON.stringify(currentUser)
+     })
+     .then(res => res.json())
+     .then(data => {
+       localStorage.setItem('saad-token', data.token);
+       navigate(from, { replace: true })
+     })
+  })
    .catch(err => {
     if (err.message === 'Firebase: Error (auth/wrong-password).') {
      setError('😠 wrong password !!');
@@ -35,7 +53,25 @@ const Login = () => {
    .finally(() => setLoading(false))
  }
  const handleGoogleLogin = () => {
-  googleLogin().then(() => navigate(from, { replace: true })).catch(err => console.error(err))
+  googleLogin().then(result => {
+    const user = result.user;
+    const currentUser = {
+      email: user.email
+    }
+    console.log(currentUser);
+    fetch('http://localhost:5000/jwt', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(currentUser)
+    })
+      .then(res => res.json())
+      .then(data => {
+        localStorage.setItem('saad-token', data.token);
+        navigate(from, { replace: true })
+      })
+  }).catch(err => console.error(err))
  }
  return (
   <div className='pt-16 lg:pt-0'>

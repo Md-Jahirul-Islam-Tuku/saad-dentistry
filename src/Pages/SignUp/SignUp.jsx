@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import useTitle from '../../hooks/useTitle';
+import { setAuthToken } from '../../API/auth';
 
 const SignUp = () => {
   const { userSignUp, auth, googleLogin } = useContext(AuthContext);
@@ -19,11 +20,14 @@ const SignUp = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    userSignUp(email, password).then(() => {
+    userSignUp(email, password)
+    .then(result => {
       updateProfile(auth.currentUser, {
         displayName: name,
         photoURL: photo
       });
+      const user = result.user;
+      setAuthToken(user)
       form.reset();
       navigate('/')
     }).catch(error => {

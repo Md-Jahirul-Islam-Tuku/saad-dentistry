@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
-import { Link, useLoaderData, useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
 
 const EditReview = () => {
@@ -25,7 +25,8 @@ const EditReview = () => {
     fetch(`http://localhost:5000/reviews/${storedReview._id}`, {
       method: 'PUT',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        authorization: `Bearer ${localStorage.getItem('saad-token')}`
       },
       body: JSON.stringify(reviewSub)
     })
