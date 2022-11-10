@@ -11,7 +11,7 @@ const Header = () => {
         <div>
           <div className="absolute transform left-24 top-1/4 hidden md:block">
             <h1 className='text-5xl text-info font-bold text-left'>
-              <span className='text-3xl text-accent'>Committed For Your Smile</span> <br />
+              <span className='text-3xl text-accent'>Dr. Saad Abdallah Al Mohaymin</span> <br />
               Committed To <br />
               Excellence
             </h1>
@@ -34,7 +34,7 @@ const Header = () => {
         <div>
           <div className="absolute transform left-24 top-1/4 hidden md:block">
             <h1 className='text-5xl text-info font-bold text-left'>
-              <span className='text-3xl text-accent'>Committed To Excellence</span> <br />
+              <span className='text-3xl text-accent'>Also Committed To Excellence</span> <br />
               Personalized & <br />
               Comfortable
             </h1>
@@ -57,8 +57,8 @@ const Header = () => {
         <div>
           <div className="absolute transform left-24 top-1/4 hidden md:block">
             <h1 className='text-5xl text-info font-bold text-left'>
-              <span className='text-3xl text-accent'>Care For Lifetime</span> <br />
-              Let Us Brighten <br />
+              <span className='text-3xl text-accent'>Also Care For Lifetime</span> <br />
+              Let Me Brighten <br />
               Your Smile
             </h1>
             <div className='flex mt-3'>
