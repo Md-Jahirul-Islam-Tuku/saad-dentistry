@@ -8,7 +8,7 @@ import Services from './Services';
 const Home = () => {
   useTitle('Home');
   return (
-    <div className='lg:px-20'>
+    <div className='lg:px-20 px-3'>
       <Header/>
       <Services/>
       <Appointment></Appointment>
@@ -17,4 +17,4 @@ const Home = () => {
   );
 };
 
-export default Home;<h1>This is home page</h1>
+export default Home;

@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [refresh, setRefresh]= useState(false);
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   useTitle('My reviews')
   useEffect(()=>{
     fetch(`http://localhost:5000/reviews?email=${user?.email}`)
@@ -62,11 +62,8 @@ const MyReviews = () => {
     })
   }
   return (
-    <div className='py-32 px-56'>
-      {
-        reviews.length === 0 && <h1 className="text-3xl font-semibold text-gray-300" >No reviews were added</h1>
-      }
-      <div>
+    <div className='pt-32 px-3 md:px-10 lg:px-56 h-[100vh]'>
+      <div className=''>
         {
           reviews.map(review => <Review
             key={review?._id}
@@ -75,6 +72,9 @@ const MyReviews = () => {
           ></Review>)
         }
       </div>
+      {
+        reviews.length === 0 && <h1 className="text-3xl font-semibold text-gray-300" >No reviews were added</h1>
+      }
     </div>
   );
 };

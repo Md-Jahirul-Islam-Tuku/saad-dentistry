@@ -6,7 +6,7 @@ import PhotoViewer from '../Shared/PhotoViewer';
 const ServiceCard = ({ info }) => {
   const { _id, title, img, rating, price, description } = info;
   return (
-    <div className="card bg-accent shadow-xl rounded-none">
+    <div className="card bg-accent shadow-xl rounded-none mb-3 md:mb-0">
       <figure>
         <PhotoViewer image={img}/>
       </figure>

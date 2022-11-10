@@ -4,8 +4,8 @@ import bgImg from '../../Assets/img/bg-img.jpg'
 const Appointment = () => {
   return (
     <div className='my-10'>
-      <div className="hero h-[80vh] flex" style={{ backgroundImage: `url(${bgImg})` }}>
-        <div className="card w-1/3 left-20">
+      <div className="hero h-[80vh] lg:flex" style={{ backgroundImage: `url(${bgImg})` }}>
+        <div className="card w-full lg:w-1/3 lg:left-20">
           <div className="card-body">
             <h3 className='text-2xl font-semibold text-accent text-left'>Book Your Visit At</h3>
             <h1 className='text-4xl font-bold text-info text-left'>SaaDDentistry</h1>
@@ -33,7 +33,7 @@ const Appointment = () => {
             </div>
           </div>
         </div>
-        <div className='w-1/2'></div>
+        <div className='hidden lg:block w-1/2'></div>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ import ServicesTable from '../Pages/ServicesAll/ServicesTable';
 const ServicesDisplay = () => {
   useTitle('All services')
   return (
-    <div className='grid grid-cols-4 lg:px-20 pt-32'>
+    <div className='md:grid grid-cols-4 px-3 lg:px-20 pt-32'>
       <ServicesTable />
       <Outlet/>
     </div>

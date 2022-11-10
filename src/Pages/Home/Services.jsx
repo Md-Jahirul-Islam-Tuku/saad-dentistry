@@ -13,17 +13,18 @@ const Services = () => {
   return (
     <div>
       <div className='pt-20'>
-        <h1 className='text-left text-3xl text-accent'>Committed to</h1>
-        <div className='flex justify-between items-center'>
+        <h1 className='lg:text-left text-3xl text-accent'>Committed to</h1>
+        <div className='lg:flex justify-between items-center'>
           <h1 className='text-5xl text-info font-bold'>Excellence</h1>
-          <Link to="/services" ><button className='btn btn-info shadow-md text-white hover:bg-gradient-to-r from-info to-accent border-0'>View All Services <FaAngleDoubleRight className='ml-3' /></button></Link>
+          <Link to="/services" ><button className='hidden lg:flex btn btn-info shadow-md text-white hover:bg-gradient-to-r from-info to-accent border-0'>View All Services <FaAngleDoubleRight className='ml-3' /></button></Link>
         </div>
       </div>
-      <div className='grid grid-cols-3 gap-5 my-10'>
+      <div className='grid lg:grid-cols-3 md:grid-cols-2 lg:gap-5 my-3 lg:my-10'>
         {
           services.map(service => <ServiceCard key={service._id} info={service} />).slice(0, 3)
         }
       </div>
+      <Link to="/services" ><button className='lg:hidden btn btn-info shadow-md text-white hover:bg-gradient-to-r from-info to-accent border-0'>View All Services <FaAngleDoubleRight className='ml-3' /></button></Link>
     </div>
   );
 };

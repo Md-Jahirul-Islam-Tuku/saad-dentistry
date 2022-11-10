@@ -6,7 +6,7 @@ import useTitle from '../../hooks/useTitle';
 const Blog = () => {
   useTitle('Blog');
   return (
-    <div className='pt-28 h-[100vh] lg:px-20'>
+    <div className='pt-28 h-[100vh] px-3 md:px-10 lg:px-20'>
       <img className='mx-auto h-20' src={logo} alt="logo" />
       <img className='mx-auto h-5 mt-3 mb-10' src={border} alt="border" />
       <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">

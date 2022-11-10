@@ -7,9 +7,9 @@ const Header = () => {
   return (
     <div className="carousel w-full pt-28">
       <div id="slide1" className="carousel-item relative w-full">
-        <img alt="..." src="https://i.ibb.co/cN0jYNw/SaaD-1.jpg" className="w-full rounded-xl" />
+        <img alt="..." src="https://i.ibb.co/cN0jYNw/SaaD-1.jpg" className="w-full h-72 lg:h-full rounded-xl" />
         <div>
-          <div className="absolute transform left-24 top-1/4">
+          <div className="absolute transform left-24 top-1/4 hidden md:block">
             <h1 className='text-5xl text-info font-bold text-left'>
               <span className='text-3xl text-accent'>Committed For Your Smile</span> <br />
               Committed To <br />
@@ -25,14 +25,14 @@ const Header = () => {
           </div>
         </div>
         <div className="absolute flex justify-center gap-2 transform -translate-y-1/2 left-5 right-5 bottom-0">
-          <a href="#slide3" className="btn btn-circle btn-info">❮</a>
-          <a href="#slide2" className="btn btn-circle btn-info">❯</a>
+          <a href="#slide3" className="btn btn-sm lg:btn-md btn-circle btn-info">❮</a>
+          <a href="#slide2" className="btn btn-sm lg:btn-md btn-circle btn-info">❯</a>
         </div>
       </div>
       <div id="slide2" className="carousel-item relative w-full">
-        <img alt="..." src="https://i.ibb.co/CMLL6cH/SaaD-2.jpg" className="w-full rounded-xl" />
+        <img alt="..." src="https://i.ibb.co/CMLL6cH/SaaD-2.jpg" className="w-full h-72 lg:h-full rounded-xl" />
         <div>
-          <div className="absolute transform left-24 top-1/4">
+          <div className="absolute transform left-24 top-1/4 hidden md:block">
             <h1 className='text-5xl text-info font-bold text-left'>
               <span className='text-3xl text-accent'>Committed To Excellence</span> <br />
               Personalized & <br />
@@ -48,14 +48,14 @@ const Header = () => {
           </div>
         </div>
         <div className="absolute flex justify-center gap-2 transform -translate-y-1/2 left-5 right-5 bottom-0">
-          <a href="#slide1" className="btn btn-circle btn-info">❮</a>
-          <a href="#slide3" className="btn btn-circle btn-info">❯</a>
+          <a href="#slide1" className="btn btn-sm lg:btn-md btn-circle btn-info">❮</a>
+          <a href="#slide3" className="btn btn-sm lg:btn-md btn-circle btn-info">❯</a>
         </div>
       </div>
       <div id="slide3" className="carousel-item relative w-full">
-        <img alt="..." src="https://i.ibb.co/jwQVkCr/SaaD-3.jpg" className="w-full rounded-xl" />
+        <img alt="..." src="https://i.ibb.co/jwQVkCr/SaaD-3.jpg" className="w-full h-72 lg:h-full rounded-xl" />
         <div>
-          <div className="absolute transform left-24 top-1/4">
+          <div className="absolute transform left-24 top-1/4 hidden md:block">
             <h1 className='text-5xl text-info font-bold text-left'>
               <span className='text-3xl text-accent'>Care For Lifetime</span> <br />
               Let Us Brighten <br />
@@ -71,8 +71,8 @@ const Header = () => {
           </div>
         </div>
         <div className="absolute flex justify-center gap-2 transform -translate-y-1/2 left-5 right-5 bottom-0">
-          <a href="#slide2" className="btn btn-circle btn-info">❮</a>
-          <a href="#slide1" className="btn btn-circle btn-info">❯</a>
+          <a href="#slide2" className="btn btn-sm lg:btn-md btn-circle btn-info">❮</a>
+          <a href="#slide1" className="btn btn-sm lg:btn-md btn-circle btn-info">❯</a>
         </div>
       </div>
     </div>

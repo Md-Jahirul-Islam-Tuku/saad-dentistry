@@ -9,20 +9,29 @@ const Navbar = () => {
     <li><Link to="/home" >Home</Link></li>
     <li><Link to="/blog" >Blog</Link></li>
     <li><Link to='/services' >All services</Link></li>
-    {user && <>
-      <li><Link to='/myreviews' >My reviews</Link></li>
-      <li><Link to="/add-service" >Add service</Link></li>
-    </>}
+    <li><Link to='/myreviews' >My reviews</Link></li>
+    <li><Link to="/add-service" >Add service</Link></li>
+    <div className='flex items-center'>
+      {user ? <>
+        <Link className='btn btn-xs lg:btn-md font-semibold text-info' to="/" onClick={logOut} >Log Out</Link>
+        <div className='my-auto tooltip tooltip-bottom tooltip-info' data-tip={user?.displayName}>
+          <img className='h-12 w-12 ml-2 mx-auto rounded-full bg-gray-400' src={user?.photoURL} alt="User" />
+        </div>
+      </> : <>
+        <Link className='btn btn-xs lg:btn-md font-semibold text-info' to="/signup" >Sign Up</Link>
+        <Link className='btn btn-xs lg:btn-md font-semibold text-info' to="/login" >Login</Link>
+      </>}
+    </div>
   </>
   const get = <>
     {user ? <>
-      <Link className='btn font-semibold text-info' to="/" onClick={logOut} >Log Out</Link>
+      <Link className='btn btn-xs lg:btn-md font-semibold text-info' to="/" onClick={logOut} >Log Out</Link>
       <div className='my-auto tooltip tooltip-bottom tooltip-info' data-tip={user?.displayName}>
         <img className='h-12 w-12 rounded-full bg-gray-400' src={user?.photoURL} alt="User" />
       </div>
     </> : <>
-        <Link className='btn font-semibold text-info' to="/signup" >Sign Up</Link>
-        <Link className='btn font-semibold text-info' to="/login" >Login</Link>
+        <Link className='btn btn-xs lg:btn-md font-semibold text-info' to="/signup" >Sign Up</Link>
+        <Link className='btn btn-xs lg:btn-md font-semibold text-info' to="/login" >Login</Link>
     </>}
 
   </>
@@ -44,7 +53,7 @@ const Navbar = () => {
           {menu}
         </ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end hidden">
         <ul className='flex items-center gap-1'>
           {get}
         </ul>

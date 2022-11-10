@@ -46,7 +46,7 @@ const EditReview = () => {
     navigate('/myreviews');
   }
   return (
-    <div className='pt-56 h-[100vh] px-56'>
+    <div className='lg:pt-56 pt-32 h-[100vh] px-3 lg:px-56'>
       <form onSubmit={handleReview} className="shadow-xl p-5 bg-neutral rounded-xl mb-10">
         <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
           <div className="col-span-full">
@@ -55,7 +55,6 @@ const EditReview = () => {
                 <img src={user?.photoURL} alt="" className="w-10 h-10 rounded-full dark:bg-gray-500" />
                 <h1 className='ml-2 text-xl font-semibold text-info'>{user?.displayName}</h1>
               </div>
-              {/* <Link to="/myreviews" ></Link> */}
               <label onClick={handleCancel} className='btn btn-accent btn-sm'><h1 className='text-white'>Cancel</h1></label>
             </div>
           </div>

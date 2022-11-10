@@ -10,6 +10,7 @@ import MyReviews from "../Pages/Reviews/MyReviews";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 import ServicesAll from "../Pages/ServicesAll/ServicesAll";
 import SignUp from "../Pages/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/myreviews',
-        element: <MyReviews />
+        element: <PrivateRoute><MyReviews /></PrivateRoute>
       },
       {
         path: '/reviews/:id',
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/add-service',
-        element: <AddService />
+        element: <PrivateRoute><AddService /></PrivateRoute>
       },
       {
         path: '/login',

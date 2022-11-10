@@ -9,7 +9,7 @@ const ServicesTable = () => {
       .then(data => setServices(data))
   }, [])
   return (
-    <div className="overflow-x-auto col-span-1 mr-5">
+    <div className="overflow-x-auto col-span-1 mb-5 md:mb-0 md:mr-5">
       <h1 className='text-3xl font-bold text-info my-4'>Total services {services.length}</h1>
       <div>
         {
