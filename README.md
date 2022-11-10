@@ -12,7 +12,7 @@ Hosted in Firebase -> [SaaDDentistry](https://saad-dentistry.web.app/)
 * This site built with React, React router dom, [daisyUI](https://daisyui.com/), Firebase authentication system, Mongodb with [Tailwind](https://tailwindcss.com/) and Tailwind CSS component library
   
 * [SaaDDentistry](https://saad-dentistry.web.app/) declare minimum eight services. But you can get more services from Dr. Saad Abdallah Al Mohaymin.
-* My service system and payment system very reasonable. You can know detailed from our site [EdWeb](https://ed-web-66e5b.web.app/)
+* My service system and payment system very reasonable. You can know detailed from our site [SaaDDentistry](https://saad-dentistry.web.app/)
 
 ### Description:
 SaaDDentistry is a Dr. Saad Abdallay Al Mohaymin's dental service related site. You can explore this site for knowing various dental related services. If you contact with Dr. Saad Abdallah Al Mohaymin you can know contact system and contact number from the Contact page.
