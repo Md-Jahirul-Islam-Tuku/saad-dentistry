@@ -37,12 +37,15 @@ const ServiceDetails = () => {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://saad-dentistry-server.vercel.app/reviews/${id}`, {
-          method: 'delete'
+        fetch(`https://saad-dentistry-server-tuku-webian.vercel.app/reviews/${id}`, {
+          method: 'delete',
+          headers: {
+            authorization: `Bearer ${localStorage.getItem('saad-token')}`
+          }
         })
           .then(res => res.json())
           .then(data => {
-            if (data.deletedCount > 0) {
+            if (data?.deletedCount > 0) {
               swalWithBootstrapButtons.fire(
                 'Deleted!',
                 'Your review has been deleted.',
@@ -64,7 +67,7 @@ const ServiceDetails = () => {
   }
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch(`https://saad-dentistry-server.vercel.app/review?service=${_id}`)
+    fetch(`https://saad-dentistry-server-tuku-webian.vercel.app/review?service=${_id}`)
       .then(res => res.json())
       .then(data => {
         setReviews(data);
@@ -75,14 +78,16 @@ const ServiceDetails = () => {
     e.preventDefault();
     const form = e.target;
     const service = _id;
+    const date = new Date().toLocaleString() + "";
     const serviceName = title;
     const name = user.displayName;
     const image = user.photoURL;
     const email = user.email;
     const rating = form.rating.value;
     const text = form.text.value;
-    const review = { service, serviceName, name, image, email, rating, text };
-    fetch('https://saad-dentistry-server.vercel.app/reviews', {
+    const review = { service, date, serviceName, name, image, email, rating, text };
+
+    fetch('https://saad-dentistry-server-tuku-webian.vercel.app/reviews', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
@@ -158,7 +163,7 @@ const ServiceDetails = () => {
           reviews.length === 0 && <h1 className="text-3xl font-semibold text-gray-300" >No reviews were added</h1>
         },
         {
-          reviews.map(review => <Review
+          reviews.slice(0).reverse().map(review => <Review
             key={review?._id}
             review={review}
             hide={hide}

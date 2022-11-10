@@ -23,7 +23,7 @@ const AddService = () => {
       description: description
     }
     console.log(service);
-    fetch('https://saad-dentistry-server.vercel.app/services', {
+    fetch('https://saad-dentistry-server-tuku-webian.vercel.app/services', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

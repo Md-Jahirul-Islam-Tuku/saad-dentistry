@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const Review = ({ review, handleDelete }) => {
-  const { _id, name, image, rating, text, email, serviceName } = review;
+  const { _id, date, name, image, rating, text, email, serviceName } = review;
   const { user } = useContext(AuthContext);
 
   return (
@@ -16,7 +16,7 @@ const Review = ({ review, handleDelete }) => {
           </div>
           <div>
             <h4 className="font-bold">{name}</h4>
-            <span className="text-xs dark:text-black">2 days ago</span>
+            <span className="text-xs dark:text-black">{date}</span>
           </div>
         </div>
         <div className="flex items-center space-x-2 dark:text-yellow-500">

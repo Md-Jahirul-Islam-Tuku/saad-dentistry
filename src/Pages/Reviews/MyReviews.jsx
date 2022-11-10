@@ -10,7 +10,7 @@ const MyReviews = () => {
   const { user, logOut } = useContext(AuthContext);
   useTitle('My reviews')
   useEffect(() => {
-    fetch(`https://saad-dentistry-server.vercel.app/reviews?email=${user?.email}`, {
+    fetch(`https://saad-dentistry-server-tuku-webian.vercel.app/reviews?email=${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem('saad-token')}`
       }
@@ -45,7 +45,7 @@ const MyReviews = () => {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://saad-dentistry-server.vercel.app/reviews/${id}`, {
+        fetch(`https://saad-dentistry-server-tuku-webian.vercel.app/reviews/${id}`, {
           method: 'delete',
           headers: {
             authorization: `Bearer ${localStorage.getItem('saad-token')}`
@@ -77,7 +77,7 @@ const MyReviews = () => {
     <div className='pt-32 px-3 md:px-10 lg:px-56 min-h-[100vh] lg:mb-10'>
       <div className=''>
         {
-          reviews.map(review => <Review
+          reviews.slice(0).reverse().map(review => <Review
             key={review?._id}
             review={review}
             handleDelete={handleDelete}

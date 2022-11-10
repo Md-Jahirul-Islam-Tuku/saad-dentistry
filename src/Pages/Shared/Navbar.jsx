@@ -11,7 +11,7 @@ const Navbar = () => {
     <li><Link to='/services' >All services</Link></li>
     <li><Link to='/myreviews' >My reviews</Link></li>
     <li><Link to="/add-service" >Add service</Link></li>
-    <div className='flex items-center'>
+    <div className='lg:hidden items-center flex'>
       {user ? <>
         <Link className='btn btn-xs lg:btn-md font-semibold text-info' to="/" onClick={logOut} >Log Out</Link>
         <div className='my-auto tooltip tooltip-bottom tooltip-info' data-tip={user?.displayName}>
@@ -53,7 +53,7 @@ const Navbar = () => {
           {menu}
         </ul>
       </div>
-      <div className="navbar-end hidden">
+      <div className="navbar-end lg:flex hidden">
         <ul className='flex items-center gap-1'>
           {get}
         </ul>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const ServicesTable = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch('https://saad-dentistry-server.vercel.app/services')
+    fetch('https://saad-dentistry-server-tuku-webian.vercel.app/services')
       .then(res => res.json())
       .then(data => setServices(data))
   }, [])
