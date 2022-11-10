@@ -1,6 +1,6 @@
 # [SaaDDentistry](https://saad-dentistry.web.app/)
 
-A simple React app built with React, Firebase, express.js, Mongodb and React router dom for personal dental service provide.
+A simple React app built with React, Firebase, express.js, Mongodb and React router dom about Dental Surgeon Dr. Saad Abdallah Al Mohaymin's personal dental services.
 
 ## Live Link:
 
